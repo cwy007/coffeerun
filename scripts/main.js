@@ -9,6 +9,6 @@
   window.myTruck = myTruck;
   var formHandler = new FormHandler(FROM_SELECTOR);
 
-  formHandler.addSubmitHandler();
+  formHandler.addSubmitHandler(myTruck.createOrder.bind(myTruck));
   console.log(formHandler);
 })(window);
