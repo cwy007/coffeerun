@@ -26,6 +26,15 @@ coffeebj
 cwy@bignerdranch.com
 
 myTruck = new App.Truck('k.i.t.t. 200', new App.DataStore());
+myTruck.createOrder({coffee: "dsda", emailAddress: "cwy1@bignerdranch.com", size: "tall", flavor: "", strength: "30"})
+myTruck.createOrder({coffee: "dsda", emailAddress: "cwy2@bignerdranch.com", size: "tall", flavor: "", strength: "30"})
+myTruck.createOrder({coffee: "dsda", emailAddress: "cwy3@bignerdranch.com", size: "tall", flavor: "", strength: "30"})
+
+var CHECKLIST_SELECTOR = '[data-coffee-order="checklist"]';
+var CheckList = App.CheckList;
+var checkList = new CheckList(CHECKLIST_SELECTOR);
+myTruck.printOrders(checkList.addRow.bind(checkList));
+
 myTruck.printOrders()
 
 ```
