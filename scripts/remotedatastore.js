@@ -31,7 +31,7 @@
     });
   };
 
-  RemoteDataStore.prototype.get = function (key) {
+  RemoteDataStore.prototype.remove = function (key) {
     $.ajax(this.serverUrl + '/' + key, {
       type: 'DELETE'
     });
