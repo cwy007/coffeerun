@@ -15,19 +15,18 @@
   var remoteDS = new RemoteDataStore(SERVER_URL);
   var myTruck = new Truck('ncc-1701', remoteDS);
   window.myTruck = myTruck;
-  var checklist = new CheckList(CHECKLIST_SELECTOR);
-  checklist.addClickHandler(myTruck.deliverOrder.bind(myTruck));
+  var checkList = new CheckList(CHECKLIST_SELECTOR);
+  checkList.addClickHandler(myTruck.deliverOrder.bind(myTruck));
 
   var formHandler = new FormHandler(FROM_SELECTOR);
   formHandler.addSubmitHandler(function (data) {
-    myTruck.createOrder.call(myTruck, data)
+    return myTruck.createOrder.call(myTruck, data)
       .then(function () {
-        checklist.addRow.call(checklist, data);
-      },
-      function () {
-        alert('Server unreachable. Try again later.');
+        checkList.addRow.call(checkList, data);
       });
   });
 
   formHandler.addInputHandler(Validation.isCompanyEmail);
+
+  myTruck.printOrders(checkList.addRow.bind(checkList));
 })(window);
