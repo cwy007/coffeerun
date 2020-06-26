@@ -12,8 +12,9 @@
   var myTruck = new Truck('ncc-1701', new DataStore());
   window.myTruck = myTruck;
   var checklist = new CheckList(CHECKLIST_SELECTOR);
-  var formHandler = new FormHandler(FROM_SELECTOR);
+  checklist.addClickHandler(myTruck.deliverOrder.bind(myTruck));
 
+  var formHandler = new FormHandler(FROM_SELECTOR);
   formHandler.addSubmitHandler(function (data) {
     myTruck.createOrder.call(myTruck, data);
     checklist.addRow.call(checklist, data);
