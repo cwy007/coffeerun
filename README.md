@@ -28,15 +28,15 @@ myTruck.printOrders();
 ## ajax
 
 ```js
+// post 请求会报错
+// This MongoDB deployment does not support retryable writes. Please add retryWrites=false to your connection string.
 url = "http://coffeerun-v2-rest-api.herokuapp.com/api/coffeeorders";
 
-url = "http://localhost:3001/api/coffeeorders";
+// url = "http://localhost:3001/api/coffeeorders";
 var remoteDS = new App.RemoteDataStore(url);
 
 remoteDS.add('a@b.com', {emailAddress: 'a@b.com', coffee: 'espresso'});
 
 ```
-
-This MongoDB deployment does not support retryable writes. Please add retryWrites=false to your connection string.
 
 (index):1 Access to XMLHttpRequest at 'http://localhost:3001/api/coffeeorders' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
