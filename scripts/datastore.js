@@ -7,25 +7,29 @@
     this.data = {};
   }
 
-  DataStore.prototype.add = function (key, val) {
+  function promiseResolvedWith(value) {
     var promise = new Promise(function (resolve, reject) {
-      this.data[key] = val;
-      resolve(null);
-    }.bind(this));
-
+      resolve(value);
+    });
     return promise;
+  }
+
+  DataStore.prototype.add = function (key, val) {
+    this.data[key] = val;
+    return promiseResolvedWith(val);
   };
 
   DataStore.prototype.get = function (key) {
-    return this.data[key];
+    return promiseResolvedWith(this.data[key]);
   };
 
   DataStore.prototype.getAll = function () {
-    return this.data;
+    return promiseResolvedWith(this.data);
   };
 
   DataStore.prototype.remove = function (key) {
     delete this.data[key];
+    return promiseResolvedWith(null);
   };
 
   App.DataStore = DataStore;
