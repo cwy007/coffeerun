@@ -16,9 +16,18 @@
   }
 
   CheckList.prototype.addRow = function (coffeeOrder) {
+    this.removeRow(coffeeOrder.emailAddress);
+
     var rowElement = new Row(coffeeOrder);
 
     this.$element.append(rowElement.$element);
+  };
+
+  CheckList.prototype.removeRow = function (email) {
+    this.$element
+        .find('[value="' + email + '"]')
+        .closest('[data-coffee-order="checkbox"]')
+        .remove();
   };
 
   function Row(coffeeOrder) {
