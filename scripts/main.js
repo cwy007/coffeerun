@@ -20,8 +20,13 @@
 
   var formHandler = new FormHandler(FROM_SELECTOR);
   formHandler.addSubmitHandler(function (data) {
-    myTruck.createOrder.call(myTruck, data);
-    checklist.addRow.call(checklist, data);
+    myTruck.createOrder.call(myTruck, data)
+      .then(function () {
+        checklist.addRow.call(checklist, data);
+      },
+      function () {
+        alert('Server unreachable. Try again later.');
+      });
   });
 
   formHandler.addInputHandler(Validation.isCompanyEmail);
