@@ -25,6 +25,9 @@ myTruck.printOrders();
 coffeebj
 cwy@bignerdranch.com
 
+myTruck = new App.Truck('k.i.t.t. 200', new App.DataStore());
+myTruck.printOrders()
+
 ```
 
 ## ajax
